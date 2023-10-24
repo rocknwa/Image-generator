@@ -1,5 +1,6 @@
 "use client";
 
+import "./App.scss";
 import { useRef, useState } from "react";
 import { OPTIONS } from "@/lib/constants";
 import Option from "@/components/Option";
@@ -10,8 +11,10 @@ export default function Home() {
   const [renderedImages, setRenderedImages] = useState([]);
   const [loading, setLoading] = useState(false);
 
-   
-
+  const stars = [];
+  for(let i = 0; i < 20; i++) {
+    stars.push(<div className="shooting_star" key={i}></div>)
+  }
 
   const appendPrompt = (word) => {
     promptRef.current.value = promptRef.current.value.concat(", ", word);
@@ -45,6 +48,7 @@ export default function Home() {
 
   return (
     <main className="container max-w-4xl mx-auto">
+      {stars}
       <section className="flex items-center gap-2 px-6 py-6">
         <h2>Prompt</h2>
         <input
